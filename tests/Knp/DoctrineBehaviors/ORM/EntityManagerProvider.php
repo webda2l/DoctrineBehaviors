@@ -20,17 +20,14 @@ trait EntityManagerProvider
 {
     private $em;
 
-    abstract protected function getUsedEntityFixtures();
+    abstract protected function getUsedEntityFixtures(): void;
 
     /**
      * EntityManager mock object together with
      * annotation mapping driver and pdo_sqlite
      * database in memory
-     *
-     * @param  EventManager  $evm
-     * @return EntityManager
      */
-    protected function getEntityManager(?EventManager $evm = null, ?Configuration $config = null, array $conn = [])
+    protected function getEntityManager(?EventManager $evm = null, ?Configuration $config = null, array $conn = []): EntityManager
     {
         if ($this->em !== null) {
             return $this->em;
@@ -60,10 +57,8 @@ trait EntityManagerProvider
      * annotation mapping driver and engine given
      * by DB_ENGINE (pdo_mysql or pdo_pgsql)
      * database in memory
-     *
-     * @return \Doctrine\ORM\EntityManager
      */
-    protected function getDBEngineEntityManager()
+    protected function getDBEngineEntityManager(): \Doctrine\ORM\EntityManager
     {
         if (DB_ENGINE === 'pgsql') {
             return $this->getEntityManager(
@@ -93,10 +88,8 @@ trait EntityManagerProvider
 
     /**
      * Get annotation mapping configuration
-     *
-     * @return \Doctrine\ORM\Configuration
      */
-    protected function getAnnotatedConfig()
+    protected function getAnnotatedConfig(): \Doctrine\ORM\Configuration
     {
         // We need to mock every method except the ones which
         // handle the filters
@@ -183,20 +176,16 @@ trait EntityManagerProvider
 
     /**
      * Creates default mapping driver
-     *
-     * @return \Doctrine\ORM\Mapping\Driver\Driver
      */
-    protected function getMetadataDriverImplementation()
+    protected function getMetadataDriverImplementation(): \Doctrine\ORM\Mapping\Driver\Driver
     {
         return new AnnotationDriver($_ENV['annotation_reader']);
     }
 
     /**
      * Build event manager
-     *
-     * @return EventManager
      */
-    protected function getEventManager()
+    protected function getEventManager(): EventManager
     {
         return new EventManager();
     }

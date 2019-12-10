@@ -18,10 +18,8 @@ class ClassAnalyzer
     /**
      * Return TRUE if the given object use the given trait, FALSE if not
      * @param ReflectionClass $class
-     * @param string $traitName
-     * @param boolean $isRecursive
      */
-    public function hasTrait(\ReflectionClass $class, $traitName, $isRecursive = false)
+    public function hasTrait(\ReflectionClass $class, string $traitName, bool $isRecursive = false)
     {
         if (in_array($traitName, $class->getTraitNames(), true)) {
             return true;
@@ -39,9 +37,8 @@ class ClassAnalyzer
     /**
      * Return TRUE if the given object has the given method, FALSE if not
      * @param ReflectionClass $class
-     * @param string $methodName
      */
-    public function hasMethod(\ReflectionClass $class, $methodName)
+    public function hasMethod(\ReflectionClass $class, string $methodName)
     {
         return $class->hasMethod($methodName);
     }
@@ -49,9 +46,8 @@ class ClassAnalyzer
     /**
      * Return TRUE if the given object has the given property, FALSE if not
      * @param ReflectionClass $class
-     * @param string $propertyName
      */
-    public function hasProperty(\ReflectionClass $class, $propertyName)
+    public function hasProperty(\ReflectionClass $class, string $propertyName)
     {
         if ($class->hasProperty($propertyName)) {
             return true;

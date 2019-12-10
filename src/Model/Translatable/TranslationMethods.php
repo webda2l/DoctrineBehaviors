@@ -22,10 +22,8 @@ trait TranslationMethods
 {
     /**
      * Returns the translatable entity class name.
-     *
-     * @return string
      */
-    public static function getTranslatableEntityClass()
+    public static function getTranslatableEntityClass(): string
     {
         // By default, the translatable class has the same name but without the "Translation" suffix
         return substr(self::class, 0, -11);
@@ -46,7 +44,7 @@ trait TranslationMethods
      *
      * @return $this
      */
-    public function setTranslatable($translatable)
+    public function setTranslatable(Translatable $translatable)
     {
         $this->translatable = $translatable;
 
@@ -55,10 +53,8 @@ trait TranslationMethods
 
     /**
      * Returns entity, that this translation is mapped to.
-     *
-     * @return Translatable
      */
-    public function getTranslatable()
+    public function getTranslatable(): Translatable
     {
         return $this->translatable;
     }
@@ -70,7 +66,7 @@ trait TranslationMethods
      *
      * @return $this
      */
-    public function setLocale($locale)
+    public function setLocale(string $locale)
     {
         $this->locale = $locale;
 
@@ -79,10 +75,8 @@ trait TranslationMethods
 
     /**
      * Returns this translation locale.
-     *
-     * @return string
      */
-    public function getLocale()
+    public function getLocale(): string
     {
         return $this->locale;
     }
@@ -92,7 +86,7 @@ trait TranslationMethods
      *
      * @return bool true if translation is not filled
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         foreach (get_object_vars($this) as $var => $value) {
             if (in_array($var, ['id', 'translatable', 'locale'], true)) {

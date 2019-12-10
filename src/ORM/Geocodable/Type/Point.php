@@ -27,10 +27,8 @@ class Point
 
     /**
      * Returns string representation for Point in (%f,%f) format.
-     *
-     * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('(%F,%F)', $this->latitude, $this->longitude);
     }
@@ -39,10 +37,8 @@ class Point
      * Creates new Point from array.
      *
      * @param array $array either hash or array of lat, long
-     *
-     * @return Point
      */
-    public static function fromArray(array $array)
+    public static function fromArray(array $array): self
     {
         if (isset($array['latitude'])) {
             return new self($array['latitude'], $array['longitude']);
@@ -54,10 +50,8 @@ class Point
      * Creates new Point from string.
      *
      * @param string $string string in (%f,%f) format
-     *
-     * @return Point
      */
-    public static function fromString($string)
+    public static function fromString(string $string): self
     {
         return self::fromArray(sscanf($string, '(%f,%f)'));
     }

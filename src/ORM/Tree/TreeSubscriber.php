@@ -65,10 +65,8 @@ class TreeSubscriber extends AbstractSubscriber
      * Checks if entity is a tree
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isTreeNode(ClassMetadata $classMetadata)
+    private function isTreeNode(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait(
             $classMetadata->reflClass,

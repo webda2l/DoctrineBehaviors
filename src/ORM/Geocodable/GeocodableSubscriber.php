@@ -44,7 +44,6 @@ class GeocodableSubscriber extends AbstractSubscriber
      * @param \Knp\DoctrineBehaviors\Reflection\ClassAnalyzer $classAnalyzer
      * @param                                                 $isRecursive
      * @param                                                 $geocodableTrait
-     * @param callable                                        $geolocationCallable
      */
     public function __construct(
         ClassAnalyzer $classAnalyzer,
@@ -119,7 +118,7 @@ class GeocodableSubscriber extends AbstractSubscriber
     /**
      * @return Point the location
      */
-    public function getLocation($entity)
+    public function getLocation($entity): Point
     {
         if ($this->geolocationCallable === null) {
             return false;
@@ -175,10 +174,8 @@ class GeocodableSubscriber extends AbstractSubscriber
      * Checks if entity is geocodable
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isGeocodable(ClassMetadata $classMetadata)
+    private function isGeocodable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait(
             $classMetadata->reflClass,

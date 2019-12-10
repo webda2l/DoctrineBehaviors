@@ -24,10 +24,8 @@ class DistanceFunction extends FunctionNode
 
     /**
      * Returns SQL representation of this function.
-     *
-     * @return string
      */
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         $entityLocation = $this->entityLocation->dispatch($sqlWalker);
         return sprintf(

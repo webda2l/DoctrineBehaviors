@@ -33,7 +33,6 @@ class CurrentLocaleCallable
             return $request->getLocale();
         }
 
-
         return null;
     }
 }

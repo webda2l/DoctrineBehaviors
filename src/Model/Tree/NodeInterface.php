@@ -17,43 +17,43 @@ interface NodeInterface
     /**
      * @return string the field that will represent the node in the path
      **/
-    public function getNodeId();
+    public function getNodeId(): string;
 
     /**
      * @return string the materialized path,
      * eg the representation of path from all ancestors
      **/
-    public function getMaterializedPath();
+    public function getMaterializedPath(): string;
 
     /**
      * @return string the real materialized path,
      * eg the representation of path from all ancestors + current node
      **/
-    public function getRealMaterializedPath();
+    public function getRealMaterializedPath(): string;
 
     /**
      * @return string the materialized path from the parent, eg: the representation of path from all parent ancestors
      **/
-    public function getParentMaterializedPath();
+    public function getParentMaterializedPath(): string;
 
     /**
      * Set parent path.
      *
      * @param string $path the value to set.
      */
-    public function setParentMaterializedPath($path);
+    public function setParentMaterializedPath(string $path): void;
 
     /**
      * @return NodeInterface the parent node
      **/
-    public function getParentNode();
+    public function getParentNode(): self;
 
     /**
      * @param string $path the materialized path, eg: the the materialized path to its parent
      *
      * @return NodeInterface $this Fluent interface
      **/
-    public function setMaterializedPath($path);
+    public function setMaterializedPath(string $path): self;
 
     /**
      * Used to build the hierarchical tree.
@@ -67,34 +67,31 @@ interface NodeInterface
      *
      * @return NodeInterface $this Fluent interface
      **/
-    public function setChildNodeOf(?self $node = null);
+    public function setChildNodeOf(?self $node = null): self;
 
     /**
      * @param NodeInterface $node the node to append to the children collection
      *
      * @return NodeInterface $this Fluent interface
      **/
-    public function addChildNode(self $node);
+    public function addChildNode(self $node): self;
 
     /**
      * @return Collection the children collection
      **/
-    public function getChildNodes();
+    public function getChildNodes(): Collection;
 
     /**
      * @return bool if the node is a leaf (i.e has no children)
      **/
-    public function isLeafNode();
+    public function isLeafNode(): bool;
 
     /**
      * @return bool if the node is a root (i.e has no parent)
      **/
-    public function isRootNode();
+    public function isRootNode(): bool;
 
-    /**
-     * @return NodeInterface
-     **/
-    public function getRootNode();
+    public function getRootNode(): self;
 
     /**
      * Tells if this node is a child of another node
@@ -102,12 +99,12 @@ interface NodeInterface
      *
      * @return boolean true if this node is a direct child of $node
      **/
-    public function isChildNodeOf(self $node);
+    public function isChildNodeOf(self $node): bool;
 
     /**
      * @return integer the level of this node, eg: the depth compared to root node
      **/
-    public function getNodeLevel();
+    public function getNodeLevel(): int;
 
     /**
      * Builds a hierarchical tree from a flat collection of NodeInterface elements

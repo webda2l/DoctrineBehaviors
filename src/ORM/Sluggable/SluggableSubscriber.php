@@ -84,10 +84,8 @@ class SluggableSubscriber extends AbstractSubscriber
      * Checks if entity is sluggable
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isSluggable(ClassMetadata $classMetadata)
+    private function isSluggable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait(
             $classMetadata->reflClass,

@@ -30,10 +30,8 @@ class FilterableEntity
 
     /**
      * Returns object id.
-     *
-     * @return integer
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -43,7 +41,7 @@ class FilterableEntity
      *
      * @return name.
      */
-    public function getName()
+    public function getName(): name
     {
         return $this->name;
     }
@@ -53,7 +51,7 @@ class FilterableEntity
      *
      * @param the $name value to set.
      */
-    public function setName($name): void
+    public function setName(the $name): void
     {
         $this->name = $name;
     }
@@ -63,7 +61,7 @@ class FilterableEntity
      *
      * @return integer code.
      */
-    public function getCode()
+    public function getCode(): int
     {
         return $this->code;
     }
@@ -73,7 +71,7 @@ class FilterableEntity
      *
      * @param integer $code the value to set.
      */
-    public function setCode($code): void
+    public function setCode(int $code): void
     {
         $this->code = $code;
     }

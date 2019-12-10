@@ -6,6 +6,7 @@ parameters:
 #        - 'symplify'
         - 'common'
         - 'clean-code'
+        - 'types'
 
     skip:
         PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: null

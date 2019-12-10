@@ -66,10 +66,8 @@ class SoftDeletableSubscriber extends AbstractSubscriber
 
     /**
      * Returns list of events, that this subscriber is listening to.
-     *
-     * @return array
      */
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [Events::onFlush, Events::loadClassMetadata];
     }
@@ -97,10 +95,8 @@ class SoftDeletableSubscriber extends AbstractSubscriber
      * Checks if entity is softDeletable
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isSoftDeletable(ClassMetadata $classMetadata)
+    private function isSoftDeletable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait($classMetadata->reflClass, $this->softDeletableTrait, $this->isRecursive);
     }

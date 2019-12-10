@@ -64,10 +64,8 @@ class SortableSubscriber extends AbstractSubscriber
      * Checks if entity is a sortable
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isSortable(ClassMetadata $classMetadata)
+    private function isSortable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait(
             $classMetadata->reflClass,

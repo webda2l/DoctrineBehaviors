@@ -42,7 +42,7 @@ trait Node
      *
      * @return string "/" by default
      */
-    public static function getMaterializedPathSeparator()
+    public static function getMaterializedPathSeparator(): string
     {
         return '/';
     }
@@ -190,7 +190,7 @@ trait Node
      *
      * @return string the json representation of the hierarchical result
      **/
-    public function toJson(?\Closure $prepare = null)
+    public function toJson(?\Closure $prepare = null): string
     {
         $tree = $this->toArray($prepare);
 
@@ -203,7 +203,7 @@ trait Node
      *
      * @return array the hierarchical result
      **/
-    public function toArray(?\Closure $prepare = null, ?array &$tree = null)
+    public function toArray(?\Closure $prepare = null, ?array &$tree = null): array
     {
         if ($prepare === null) {
             $prepare = function (NodeInterface $node) {
@@ -228,7 +228,7 @@ trait Node
      *
      * @return array the flatten result
      **/
-    public function toFlatArray(?\Closure $prepare = null, ?array &$tree = null)
+    public function toFlatArray(?\Closure $prepare = null, ?array &$tree = null): array
     {
         if ($prepare === null) {
             $prepare = function (NodeInterface $node) {

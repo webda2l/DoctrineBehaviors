@@ -18,10 +18,8 @@ class DeletableEntityInherit extends DeletableEntity
 
     /**
      * Returns object name.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

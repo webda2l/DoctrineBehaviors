@@ -38,10 +38,8 @@ trait SoftDeletableMethods
 
     /**
      * Checks whether the entity has been deleted.
-     *
-     * @return boolean
      */
-    public function isDeleted()
+    public function isDeleted(): bool
     {
         if ($this->deletedAt !== null) {
             return $this->deletedAt <= $this->currentDateTime();
@@ -52,10 +50,8 @@ trait SoftDeletableMethods
 
     /**
      * Checks whether the entity will be deleted.
-     *
-     * @return boolean
      */
-    public function willBeDeleted(?\DateTime $at = null)
+    public function willBeDeleted(?\DateTime $at = null): bool
     {
         if ($this->deletedAt === null) {
             return false;
@@ -69,10 +65,8 @@ trait SoftDeletableMethods
 
     /**
      * Returns date on which entity was been deleted.
-     *
-     * @return DateTime|null
      */
-    public function getDeletedAt()
+    public function getDeletedAt(): ?DateTime
     {
         return $this->deletedAt;
     }
@@ -94,10 +88,8 @@ trait SoftDeletableMethods
 
     /**
      * Get a instance of \DateTime with the current data time including milliseconds.
-     *
-     * @return \DateTime
      */
-    private function currentDateTime()
+    private function currentDateTime(): \DateTime
     {
         $dateTime = \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)));
         $dateTime->setTimezone(new \DateTimeZone(date_default_timezone_get()));

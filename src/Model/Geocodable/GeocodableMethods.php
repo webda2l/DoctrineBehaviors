@@ -27,7 +27,7 @@ trait GeocodableMethods
      *
      * @return Point.
      */
-    public function getLocation()
+    public function getLocation(): Point
     {
         return $this->location;
     }

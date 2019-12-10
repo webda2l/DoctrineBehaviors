@@ -23,7 +23,7 @@ trait Loggable
     /**
      * @return string some log informations
      */
-    public function getUpdateLogMessage(array $changeSets = [])
+    public function getUpdateLogMessage(array $changeSets = []): string
     {
         $message = [];
         foreach ($changeSets as $property => $changeSet) {

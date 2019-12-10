@@ -28,10 +28,8 @@ class TranslatableEntity
 
     /**
      * Returns object id.
-     *
-     * @return integer
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }

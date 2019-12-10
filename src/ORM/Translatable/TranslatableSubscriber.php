@@ -103,10 +103,8 @@ class TranslatableSubscriber extends AbstractSubscriber
 
     /**
      * Returns hash of events, that this subscriber is bound to.
-     *
-     * @return array
      */
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             Events::loadClassMetadata,
@@ -283,10 +281,8 @@ class TranslatableSubscriber extends AbstractSubscriber
      * Convert string FETCH mode to required string
      *
      * @param $fetchMode
-     *
-     * @return int
      */
-    private function convertFetchString($fetchMode)
+    private function convertFetchString($fetchMode): int
     {
         if (is_int($fetchMode)) {
             return $fetchMode;
@@ -304,7 +300,7 @@ class TranslatableSubscriber extends AbstractSubscriber
         }
     }
 
-    private function hasUniqueTranslationConstraint(ClassMetadata $classMetadata, $name)
+    private function hasUniqueTranslationConstraint(ClassMetadata $classMetadata, $name): void
     {
         if (! isset($classMetadata->table['uniqueConstraints'])) {
             return;
@@ -315,20 +311,16 @@ class TranslatableSubscriber extends AbstractSubscriber
 
     /**
      * Checks if entity is translatable
-     *
-     * @return boolean
      */
-    private function isTranslatable(ClassMetadata $classMetadata)
+    private function isTranslatable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait($classMetadata->reflClass, $this->translatableTrait);
     }
 
     /**
      * Checks if entity is a translation
-     *
-     * @return boolean
      */
-    private function isTranslation(ClassMetadata $classMetadata)
+    private function isTranslation(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait($classMetadata->reflClass, $this->translationTrait);
     }

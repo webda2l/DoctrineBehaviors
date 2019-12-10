@@ -18,10 +18,8 @@ trait Sortable
 
     /**
      * Get sort.
-     *
-     * @return int
      */
-    public function getSort()
+    public function getSort(): int
     {
         return $this->sort;
     }
@@ -33,7 +31,7 @@ trait Sortable
      *
      * @return $this
      */
-    public function setSort($sort)
+    public function setSort(int $sort)
     {
         $this->reordered = $this->sort !== $sort;
         $this->sort = $sort;
@@ -41,10 +39,7 @@ trait Sortable
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isReordered()
+    public function isReordered(): bool
     {
         return $this->reordered;
     }

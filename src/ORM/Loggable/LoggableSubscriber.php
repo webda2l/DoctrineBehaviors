@@ -111,9 +111,8 @@ class LoggableSubscriber extends AbstractSubscriber
      * Checks if entity supports Loggable
      *
      * @param  ReflectionClass $reflClass
-     * @return boolean
      */
-    protected function isEntitySupported(\ReflectionClass $reflClass)
+    protected function isEntitySupported(\ReflectionClass $reflClass): bool
     {
         return $this->getClassAnalyzer()->hasTrait($reflClass, 'Knp\DoctrineBehaviors\Model\Loggable\Loggable', $this->isRecursive);
     }

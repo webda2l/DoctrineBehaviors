@@ -24,20 +24,16 @@ trait TranslatableMethods
 {
     /**
      * Returns collection of translations.
-     *
-     * @return ArrayCollection
      */
-    public function getTranslations()
+    public function getTranslations(): ArrayCollection
     {
         return $this->translations = $this->translations ?: new ArrayCollection();
     }
 
     /**
      * Returns collection of new translations.
-     *
-     * @return ArrayCollection
      */
-    public function getNewTranslations()
+    public function getNewTranslations(): ArrayCollection
     {
         return $this->newTranslations = $this->newTranslations ?: new ArrayCollection();
     }
@@ -49,7 +45,7 @@ trait TranslatableMethods
      *
      * @return $this
      */
-    public function addTranslation($translation)
+    public function addTranslation(Translation $translation)
     {
         $this->getTranslations()->set((string) $translation->getLocale(), $translation);
         $translation->setTranslatable($this);
@@ -62,7 +58,7 @@ trait TranslatableMethods
      *
      * @param Translation $translation The translation
      */
-    public function removeTranslation($translation): void
+    public function removeTranslation(Translation $translation): void
     {
         $this->getTranslations()->removeElement($translation);
     }
@@ -75,10 +71,8 @@ trait TranslatableMethods
      *
      * @param string $locale The locale (en, ru, fr) | null If null, will try with current locale
      * @param bool $fallbackToDefault Whether fallback to default locale
-     *
-     * @return Translation
      */
-    public function translate($locale = null, $fallbackToDefault = true)
+    public function translate(?string $locale = null, bool $fallbackToDefault = true): Translation
     {
         return $this->doTranslate($locale, $fallbackToDefault);
     }
@@ -107,7 +101,7 @@ trait TranslatableMethods
     /**
      * @return Returns the current locale
      */
-    public function getCurrentLocale()
+    public function getCurrentLocale(): Returns
     {
         return $this->currentLocale ?: $this->getDefaultLocale();
     }
@@ -123,17 +117,15 @@ trait TranslatableMethods
     /**
      * @return Returns the default locale
      */
-    public function getDefaultLocale()
+    public function getDefaultLocale(): Returns
     {
         return $this->defaultLocale;
     }
 
     /**
      * Returns translation entity class name.
-     *
-     * @return string
      */
-    public static function getTranslationEntityClass()
+    public static function getTranslationEntityClass(): string
     {
         return self::class . 'Translation';
     }
@@ -146,10 +138,8 @@ trait TranslatableMethods
      *
      * @param string $locale The locale (en, ru, fr) | null If null, will try with current locale
      * @param bool $fallbackToDefault Whether fallback to default locale
-     *
-     * @return Translation
      */
-    protected function doTranslate($locale = null, $fallbackToDefault = true)
+    protected function doTranslate(?string $locale = null, bool $fallbackToDefault = true): Translation
     {
         if ($locale === null) {
             $locale = $this->getCurrentLocale();
@@ -189,11 +179,9 @@ trait TranslatableMethods
     /**
      * An extra feature allows you to proxy translated fields of a translatable entity.
      *
-     * @param string $method
-     *
      * @return mixed The translated value of the field for current locale
      */
-    protected function proxyCurrentLocaleTranslation($method, array $arguments = [])
+    protected function proxyCurrentLocaleTranslation(string $method, array $arguments = [])
     {
         return call_user_func_array(
             [$this->translate($this->getCurrentLocale()), $method],
@@ -206,10 +194,8 @@ trait TranslatableMethods
      *
      * @param string $locale              The locale (en, ru, fr)
      * @param bool   $withNewTranslations searched in new translations too
-     *
-     * @return Translation|null
      */
-    protected function findTranslationByLocale($locale, $withNewTranslations = true)
+    protected function findTranslationByLocale(string $locale, bool $withNewTranslations = true): ?Translation
     {
         $translation = $this->getTranslations()->get($locale);
 

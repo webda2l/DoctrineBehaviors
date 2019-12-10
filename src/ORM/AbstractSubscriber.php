@@ -28,7 +28,7 @@ abstract class AbstractSubscriber implements EventSubscriber
         $this->isRecursive = (bool) $isRecursive;
     }
 
-    abstract public function getSubscribedEvents();
+    abstract public function getSubscribedEvents(): void;
 
     protected function getClassAnalyzer()
     {

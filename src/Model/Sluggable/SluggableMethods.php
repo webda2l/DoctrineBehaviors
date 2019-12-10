@@ -20,9 +20,8 @@ trait SluggableMethods
      * Returns an array of the fields used to generate the slug.
      *
      * @abstract
-     * @return array
      */
-    abstract public function getSluggableFields();
+    abstract public function getSluggableFields(): array;
 
     /**
      * Sets the entity's slug.
@@ -39,10 +38,8 @@ trait SluggableMethods
 
     /**
      * Returns the entity's slug.
-     *
-     * @return string
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -77,20 +74,16 @@ trait SluggableMethods
 
     /**
      * Returns the slug's delimiter
-     *
-     * @return string
      */
-    private function getSlugDelimiter()
+    private function getSlugDelimiter(): string
     {
         return '-';
     }
 
     /**
      * Returns whether or not the slug gets regenerated on update.
-     *
-     * @return bool
      */
-    private function getRegenerateSlugOnUpdate()
+    private function getRegenerateSlugOnUpdate(): bool
     {
         return true;
     }

@@ -16,10 +16,8 @@ class PointType extends Type
 {
     /**
      * Gets the name of this type.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'point';
     }
@@ -29,10 +27,8 @@ class PointType extends Type
      *
      * @param array            $fieldDeclaration The field declaration.
      * @param AbstractPlatform $platform         The currently used database platform.
-     *
-     * @return string
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return 'POINT';
     }
@@ -42,10 +38,8 @@ class PointType extends Type
      *
      * @param string           $value    value in DB format
      * @param AbstractPlatform $platform DB platform
-     *
-     * @return Point
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue(string $value, AbstractPlatform $platform): Point
     {
         if (! $value) {
             return null;
@@ -65,10 +59,8 @@ class PointType extends Type
      *
      * @param Point            $value    specific point
      * @param AbstractPlatform $platform DB platform
-     *
-     * @return string
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue(Point $value, AbstractPlatform $platform): string
     {
         if (! $value) {
             return null;
@@ -90,22 +82,16 @@ class PointType extends Type
      * Usage of {@link convertToDatabaseValueSQL} and
      * {@link convertToPHPValueSQL} works for any type and mostly
      * does nothing. This method can additionally be used for optimization purposes.
-     *
-     * @return boolean
      */
-    public function canRequireSQLConversion()
+    public function canRequireSQLConversion(): bool
     {
         return true;
     }
 
     /**
      * Modifies the SQL expression (identifier, parameter) to convert to a database value.
-     *
-     * @param string                                    $sqlExpr
-     *
-     * @return string
      */
-    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
+    public function convertToDatabaseValueSQL(string $sqlExpr, AbstractPlatform $platform): string
     {
         if ($platform instanceof MySqlPlatform) {
             return sprintf('PointFromText(%s)', $sqlExpr);
@@ -113,13 +99,7 @@ class PointType extends Type
         return parent::convertToDatabaseValueSQL($sqlExpr, $platform);
     }
 
-    /**
-     * @param string                                    $sqlExpr
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     *
-     * @return string
-     */
-    public function convertToPHPValueSQL($sqlExpr, $platform)
+    public function convertToPHPValueSQL(string $sqlExpr, \Doctrine\DBAL\Platforms\AbstractPlatform $platform): string
     {
         if ($platform instanceof MySqlPlatform) {
             return sprintf('AsText(%s)', $sqlExpr);

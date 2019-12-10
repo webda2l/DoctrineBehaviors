@@ -75,10 +75,8 @@ class TimestampableSubscriber extends AbstractSubscriber
      * Checks if entity is timestampable
      *
      * @param ClassMetadata $classMetadata The metadata
-     *
-     * @return boolean
      */
-    private function isTimestampable(ClassMetadata $classMetadata)
+    private function isTimestampable(ClassMetadata $classMetadata): bool
     {
         return $this->getClassAnalyzer()->hasTrait(
             $classMetadata->reflClass,

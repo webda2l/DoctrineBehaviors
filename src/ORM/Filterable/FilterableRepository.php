@@ -26,46 +26,36 @@ trait FilterableRepository
      * Retrieve field which will be sorted using LIKE
      *
      * Example format: ['e:name', 'e:description']
-     *
-     * @return array
      */
-    abstract public function getLikeFilterColumns();
+    abstract public function getLikeFilterColumns(): array;
 
     /**
      * Retrieve field which will be sorted using LOWER() LIKE
      *
      * Example format: ['e:name', 'e:description']
-     *
-     * @return array
      */
-    abstract public function getILikeFilterColumns();
+    abstract public function getILikeFilterColumns(): array;
 
     /**
      * Retrieve field which will be sorted using EQUAL
      *
      * Example format: ['e:name', 'e:description']
-     *
-     * @return array
      */
-    abstract public function getEqualFilterColumns();
+    abstract public function getEqualFilterColumns(): array;
 
     /**
      * Retrieve field which will be sorted using IN()
      *
      * Example format: ['e:group_id']
-     *
-     * @return array
      */
-    abstract public function getInFilterColumns();
+    abstract public function getInFilterColumns(): array;
 
     /**
      * Filter values
      *
      * @param  array                      $filters - array like ['e:name' => 'nameValue'] where "e" is entity alias query, so we can filter using joins.
-     * @param \Doctrine\ORM\QueryBuilder $qb
-     * @return \Doctrine\ORM\QueryBuilder
      */
-    public function filterBy(array $filters, ?QueryBuilder $qb = null)
+    public function filterBy(array $filters, ?QueryBuilder $qb = null): \Doctrine\ORM\QueryBuilder
     {
         $filters = array_filter($filters, function ($filter) {
             return ! empty($filter);
