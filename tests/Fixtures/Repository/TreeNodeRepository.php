@@ -7,7 +7,7 @@ namespace Knp\DoctrineBehaviors\Tests\Fixtures\Repository;
 use Doctrine\ORM\EntityRepository;
 use Knp\DoctrineBehaviors\ORM\Tree\TreeTrait;
 
-final class TreeNodeEntityRepository extends EntityRepository
+final class TreeNodeRepository extends EntityRepository
 {
     use TreeTrait;
 }

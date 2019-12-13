@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Knp\DoctrineBehaviors\Contract\Entity\GeocodableInterface;
 use Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableRepositoryTrait;
 
-final class GeocodableEntityRepository extends EntityRepository
+final class GeocodableRepository extends EntityRepository
 {
     use GeocodableRepositoryTrait;
 
